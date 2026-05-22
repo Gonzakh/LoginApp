@@ -1,0 +1,6 @@
+# Archivos temporales y de configuración de Visual Studio
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
