@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gonza\\source\\repos\\LoginApp\\LoginApp.Console\\LoginApp.Console.csproj",
-      "projectName": "LoginApp.Console",
-      "projectPath": "C:\\Users\\gonza\\source\\repos\\LoginApp\\LoginApp.Console\\LoginApp.Console.csproj",
+      "projectUniqueName": "C:\\Users\\gonza\\source\\repos\\LoginApp\\LoginApp.Console\\LoginApp.ConsoleUI.csproj",
+      "projectName": "LoginApp.ConsoleUI",
+      "projectPath": "C:\\Users\\gonza\\source\\repos\\LoginApp\\LoginApp.Console\\LoginApp.ConsoleUI.csproj",
       "packagesPath": "C:\\Users\\gonza\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\gonza\\source\\repos\\LoginApp\\LoginApp.Console\\obj\\",
       "projectStyle": "PackageReference",

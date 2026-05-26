@@ -1,10 +1,12 @@
-﻿namespace LoginApp.Console
+﻿
+
+namespace LoginApp.ConsoleUI
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine("");
         }
     }
 }
