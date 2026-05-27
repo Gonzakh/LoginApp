@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="Menus\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Screens\" />
   </ItemGroup>
 
 </Project>

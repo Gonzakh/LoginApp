@@ -11,4 +11,8 @@
     <Folder Include="DTOs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoginApp.Domain\LoginApp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
