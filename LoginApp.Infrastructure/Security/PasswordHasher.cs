@@ -1,6 +1,11 @@
-﻿namespace LoginApp.Infrastructure.Security;
+﻿using LoginApp.Aplication.Interfaces;
 
-public class PasswordHasher
+namespace LoginApp.Infrastructure.Security;
+
+public class PasswordHasher : IPasswordHasher
 {
-
+    public string Hash(string passwordToHash)
+    {
+        
+    }
 }
