@@ -1,6 +1,6 @@
 ﻿namespace LoginApp.Application.Interfaces
 {
-    public class IUserRepository
+    public interface IUserRepository
     {
 
     }

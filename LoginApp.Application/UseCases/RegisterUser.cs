@@ -4,7 +4,7 @@ namespace LoginApp.Application.UseCases;
 
 public class RegisterUser
 {
-    //Proposito:    *UseCase para el registro de un nuevo usuario.
+    //Proposito:    *Adminstrar el proceso completo de registro de un nuevo usuario
     
 
 

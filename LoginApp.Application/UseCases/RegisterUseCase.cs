@@ -4,31 +4,40 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace LoginApp.Application.UseCases;
 
 public class RegisterUseCase
-{   //Proposito:    *UseCase para el registro de un nuevo usuario.
-    //              
+{   /*Proposito: UseCase para:
+                            *Registrar datos de un nuevo usuario.
+                            *Validar y normalizar el email ingresado por el usuario.
+                            *
+    */
 
-
+    //Inyeccion de dependencias
     RegisterExceptions Errors = new RegisterExceptions();
-    public string GetValidatedEmail(string requestMail)
+
+
+    //Metodos de validacion y normalizacion de datos
+    public string GetValidatedEmail(string requestEmail)
     {
-        //Proposito:    *Recibir el email ingresado por el usuario, validarlo, normalizarlo y devolverlo.
+        //Proposito:    *Recibir el email ingresado por el usuario *requestEmail*, validarlo y normalizarlo. 
+        //Retorna el email validado y normalizado, o un string vacio si el email no es valido.
+
         string returnedEmail = string.Empty;
 
 
-        if (ValidateEmail(requestMail))
+        if (ValidateEmail(requestEmail))
         {
-            returnedEmail = NormalizateEmail(requestMail);
+            returnedEmail = NormalizateEmail(requestEmail);
         }
         else
         {
-            Console.WriteLine($"El Email ingresado no es válido.\nErrores: {Errors.RegistrationErrors}\nVuelve a intentar");
+            //Pasar este mensaje a una capa de presentacion, o manejarlo con excepciones personalizadas.
+            Console.WriteLine($"El Email ingresado no es válido.\nErrores: {Errors.RegistrationErrors}\nVuelve a intentar"); 
         }
         return returnedEmail;
     }
 
     public static string NormalizateEmail(string emailToNormalize)
     {
-        //Proposito:    *Normalizar Mail ingresado *emailToNormalize* segun reglas de negocio.
+        //Proposito:    *Normalizar Email ingresado *emailToNormalize* segun reglas de negocio.
 
         emailToNormalize = emailToNormalize.Trim().ToLower();
         return emailToNormalize;
@@ -54,4 +63,8 @@ public class RegisterUseCase
         }
         return resultadoDeValidacion;
     }
+
+    //Metodos de Hash de contraseña, validacion de password
+
+     
 }

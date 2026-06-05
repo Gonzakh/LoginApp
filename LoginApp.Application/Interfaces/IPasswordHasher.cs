@@ -1,6 +1,6 @@
 ﻿namespace LoginApp.Application.Interfaces
 {
-    public class IPasswordHasher
+    public interface IPasswordHasher
     {
 
 
