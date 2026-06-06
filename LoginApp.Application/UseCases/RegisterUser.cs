@@ -42,7 +42,10 @@ public class RegisterUser
 
         string returnedPassword = string.Empty;
 
-        if()
+        if(requestPassword.Length < 8)
+        {
+            throw new ArgumentException("La contraseña ingresada es demasiado corta");
+        }
     }
 
 
