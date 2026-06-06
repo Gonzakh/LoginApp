@@ -1,32 +1,27 @@
-﻿
-
 namespace LoginApp.Domain.ValueObjects;
 
 public class EmailValueObject
 {
-    //Proposito:    *Contener la logica de validacion y normalizacion de un email ingresado por el usuario.
+    //propiedades
+    public string EmailNormalized { get; private set; } = string.Empty;
 
-    public string EmailNormalized { get; set; }
-
+    //metodos
     public string EmailValidation(string emailToNormalize)
     {
+        //Proposito: Validar el email ingresado por el usuario *emailToNormalize y devolver una version normalizada *EMailNormalized.
+
         if (string.IsNullOrWhiteSpace(emailToNormalize))
         {
-            throw new ArgumentNullException("El email es obligatorio.");
+            throw new ArgumentException("El email es obligatorio.", nameof(emailToNormalize));
         }
+
         if (!emailToNormalize.Contains("@"))
         {
-            Throw new ArgumentException("El email debe contener '@'.");
+            throw new ArgumentException("El email debe contener '@'.", nameof(emailToNormalize));
         }
 
         EmailNormalized = emailToNormalize.Trim().ToLowerInvariant();
 
         return EmailNormalized;
     }
-
-
-
-
-
-
 }

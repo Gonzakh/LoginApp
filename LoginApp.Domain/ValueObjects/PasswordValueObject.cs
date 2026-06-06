@@ -1,36 +1,26 @@
-﻿using System;
+namespace LoginApp.Domain.ValueObjects;
 
 public class PasswordValueObject
 {
-	public PasswordValueObject()
-	{
-        string PasswordNormalized { get; set; }
+    //Propiedades
+    public string PasswordNormalized { get; private set; } = string.Empty;
 
-        public string PasswordValidation(string passwordToNormalize)
+    //metodos
+    public string PasswordValidation(string passwordToNormalize)
     {
+        //Proposito: Validar la contraseña ingresada por el usuario *passwordToNormalize y devolver una version normalizada *PasswordNormalized.
         if (string.IsNullOrWhiteSpace(passwordToNormalize))
         {
-            throw new ArgumentNullException("La contraseña es obligatoria.");
+            throw new ArgumentException("La contraseña es obligatoria.", nameof(passwordToNormalize));
         }
-        if (passwordToNormalize.Length < 8)
+
+        if (passwordToNormalize.Length < 6)
         {
-            throw new ArgumentException("La contraseña debe tener al menos 8 caracteres.");
+            throw new ArgumentException("La contraseña debe tener al menos 6 caracteres.", nameof(passwordToNormalize));
         }
-        if (!passwordToNormalize.Any(char.IsUpper))
-        {
-            throw new ArgumentException("La contraseña debe contener al menos una letra mayúscula.");
-        }
-        if (!passwordToNormalize.Any(char.IsLower))
-        {
-            throw new ArgumentException("La contraseña debe contener al menos una letra minúscula.");
-        }
-        if (!passwordToNormalize.Any(char.IsDigit))
-        {
-            throw new ArgumentException("La contraseña debe contener al menos un número.");
-        }
+
         PasswordNormalized = passwordToNormalize.Trim();
+
         return PasswordNormalized;
     }
-
-}
 }

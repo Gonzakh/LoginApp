@@ -1,53 +1,41 @@
-﻿using LoginApp.Application.Interfaces;
-using LoginApp.Domain.Exceptions;
+using LoginApp.Application.Interfaces;
 using LoginApp.Domain.ValueObjects;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LoginApp.Application.UseCases;
 
 public class RegisterUser
-{   /*Proposito: UseCase para:
-                            *Obtener datos validados y normalizados para crear una nueva entidad User.
-                            *Devolver un objeto UserDTO con los datos validados y normalizados.
-    */
+{
+    /// Proposito: Gestionar el proceso de registro de un nuevo usuario, 
+    /// incluyendo la validación de correo electrónico y contraseña, y el hashing de la contraseña 
+    /// antes de almacenarla.
 
-    //Inyeccion de dependencias
-    RegisterExceptions Errors = new RegisterExceptions();
-    EmailValueObject Email = new EmailValueObject();
-  
-    private readonly IPasswordHasher _passwordHasher;
+    //Dependencias
+    private readonly IPasswordHasher _passwordHasher; 
+    private readonly EmailValueObject _email = new();       
+    private readonly PasswordValueObject _password = new(); 
+
+    //Constructor
     public RegisterUser(IPasswordHasher passwordHasher)
     {
         _passwordHasher = passwordHasher;
     }
 
-
-    //Metodos de validacion y normalizacion de email
+    //Métodos
     public string GetValidatedEmail(string requestEmail)
     {
-        //Proposito:    *Recibir el email ingresado por el usuario *requestEmail*, validarlo y normalizarlo. 
-        //Retorna el email validado y normalizado, o arroja una excepción.
-        //Precondiciones:  *requestEmail es traido desde UserDTO.
+        //Proposito: Validar el correo proporcionado por el User *requesEmail y
+        //devolver el correo validado o lanzar una excepción si el correo no es válido.
 
-        string returnedEmail = Email.EmailValidation(requestEmail);
-
-        return returnedEmail;
+        return _email.EmailValidation(requestEmail);
     }
 
-    //Metodos de validacion y normalizacion de password
     public string GetValidatedPassword(string requestPassword)
     {
-        //Proposito:    *Recibir la contraseña ingresada por el usuario *requestPassword*, validarla y normalizarla.
-        //
+        //Proposito: Validar la contraseña proporcionada por el User *requestPassword,
+        //devolver la contraseña validada o lanzar una excepción si la contraseña no es válida.
 
-        string returnedPassword = string.Empty;
+        string validatedPassword = _password.PasswordValidation(requestPassword);
 
-        if(requestPassword.Length < 8)
-        {
-            throw new ArgumentException("La contraseña ingresada es demasiado corta");
-        }
+        return _passwordHasher.Hash(validatedPassword);
     }
-
-
-
 }
