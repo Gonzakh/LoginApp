@@ -1,0 +1,23 @@
+
+-- Flujo para relación de Console UI - Aplication (Mediante DTO):
+
+Console UI
+
+-> lee input
+-> crea Request DTO
+-> llama RegisterUser
+-> RegisterUser valida/normaliza
+-> hashea password usando IPasswordHasher
+-> crea User
+-> guarda User usando IUserRepository
+-> devuelve Result DTO
+-> Console UI muestra mensaje
+
+UI input
+
+-> RegisterUserRequest
+-> RegisterUser.Execute(request)
+-> RegisterUserResult
+-> UI output
+
+-- La UI solo recolecta datos. No valida email. No hashea. No crea User.

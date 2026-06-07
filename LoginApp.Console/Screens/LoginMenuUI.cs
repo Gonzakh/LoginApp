@@ -10,4 +10,13 @@ public class LoginMenuUI
         Console.WriteLine("3. Exit");
         Console.Write("Select an option: ");
     }
+
+    public static void LoginMenu()
+    {
+        Console.WriteLine("=== Login Menu ===");
+        Console.WriteLine("Enter your email");
+        Console.WriteLine($"Your Email is {Console.ReadLine()}");
+        Console.WriteLine("Enter your password");
+        Console.WriteLine($"Your Password is {Console.ReadLine()}");
+    }
 }

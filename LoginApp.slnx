@@ -1,5 +1,7 @@
 <Solution>
-  <Folder Name="/docs/" />
+  <Folder Name="/docs/">
+    <File Path="Recomendaciones de Flujo.txt" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="LoginApp.Application/LoginApp.Application.csproj" Id="965f313e-e723-4791-9cf0-1c97aa1d7801" />
     <Project Path="LoginApp.Console/LoginApp.ConsoleUI.csproj" />

@@ -10,7 +10,7 @@ namespace LoginApp.ConsoleUI
         {
             var loginMenu = new Screens.LoginMenuUI();
             LoginMenuUI.Show();
-
+            LoginMenuUI.LoginMenu();
         }
     }
 }
