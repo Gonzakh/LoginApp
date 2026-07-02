@@ -47,7 +47,7 @@ public class RegisterUser
 
         string validatedUserName = _username.UserNameValidation(requestUserName);
 
-        return requestUserName; 
+        return validatedUserName; 
     }
 
     public void SaveUserInRepository(string userName, string hashedPassword, string validatedEmail)
@@ -57,7 +57,7 @@ public class RegisterUser
 
         var newUser = new Domain.Entities.User(userName, hashedPassword, validatedEmail); // Crear una nueva instancia de User con los datos validados
 
-
+        //Falta donde lo manda jejox
     }
 
 }

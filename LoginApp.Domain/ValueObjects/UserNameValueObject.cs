@@ -15,6 +15,7 @@ public class UserNameValueObject
         }
         UserNameNormalized = userNameToNormalize.Trim().ToLowerInvariant();
         return UserNameNormalized;
+
     }
 
 }
