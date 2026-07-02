@@ -10,15 +10,21 @@ public class RegisterUser
     /// antes de almacenarla.
 
     //Dependencias
+    private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher; 
     private readonly EmailValueObject _email = new();       
     private readonly PasswordValueObject _password = new(); 
     private readonly UserNameValueObject _username = new();
 
-    //Constructor
+    //Constructores
     public RegisterUser(IPasswordHasher passwordHasher)
     {
         _passwordHasher = passwordHasher;
+    }
+
+    public RegisterUser(IUserRepository userRepository)
+    {
+        _userRepository = userRepository;
     }
 
     //Métodos
@@ -50,12 +56,13 @@ public class RegisterUser
         return validatedUserName; 
     }
 
-    public void SaveUserInRepository(string userName, string hashedPassword, string validatedEmail)
+    public void SaveUserInRepository(string validatedUserName, string hashedPassword, string validatedEmail)
     {
         //Proposito: Crear un nuevo usuario con los datos validados y guardarlo en el repositorio.
         //Aclaración: Los datos validados *userName, *hashedPassword y *validatedEmail se pasan como parámetros validados.
 
-        var newUser = new Domain.Entities.User(userName, hashedPassword, validatedEmail); // Crear una nueva instancia de User con los datos validados
+        var newUser = new Domain.Entities.User(validatedUserName, hashedPassword, validatedEmail); // Crear una nueva instancia de User con los datos validados
+
 
         //Falta donde lo manda jejox
     }
