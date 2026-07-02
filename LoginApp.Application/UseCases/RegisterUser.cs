@@ -13,6 +13,7 @@ public class RegisterUser
     private readonly IPasswordHasher _passwordHasher; 
     private readonly EmailValueObject _email = new();       
     private readonly PasswordValueObject _password = new(); 
+    private readonly UserNameValueObject _username = new();
 
     //Constructor
     public RegisterUser(IPasswordHasher passwordHasher)
@@ -23,7 +24,7 @@ public class RegisterUser
     //Métodos
     public string GetValidatedEmail(string requestEmail)
     {
-        //Proposito: Validar el correo proporcionado por el User *requesEmail y
+        //Proposito: Validar el correo proporcionado por el User *requestEmail y
         //devolver el correo validado o lanzar una excepción si el correo no es válido.
 
         return _email.EmailValidation(requestEmail);
@@ -38,4 +39,25 @@ public class RegisterUser
 
         return _passwordHasher.Hash(validatedPassword);
     }
+
+    public string GetValidatedUserName(string requestUserName)
+    {
+        //Proposito: Validar el nombre de usuario proporcionado por el User *requestUserName,
+        //devolver el nombre de usuario validado o lanzar una excepción si el nombre de usuario no es válido.
+
+        string validatedUserName = _username.UserNameValidation(requestUserName);
+
+        return requestUserName; 
+    }
+
+    public void SaveUserInRepository(string userName, string hashedPassword, string validatedEmail)
+    {
+        //Proposito: Crear un nuevo usuario con los datos validados y guardarlo en el repositorio.
+        //Aclaración: Los datos validados *userName, *hashedPassword y *validatedEmail se pasan como parámetros validados.
+
+        var newUser = new Domain.Entities.User(userName, hashedPassword, validatedEmail); // Crear una nueva instancia de User con los datos validados
+
+
+    }
+
 }

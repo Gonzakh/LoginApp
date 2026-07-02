@@ -1,16 +1,17 @@
 
--- Flujo para relación de Console UI - Aplication (Mediante DTO):
+-- Flujo para relación de Console UI - Aplication:
+
+// Poner un DTO aqui  es un error, ya que no representa al user del Dominio, sino el Input del usuario. 
+// DTOs son para la capa de Application, no para la UI.
 
 Console UI
 
 -> lee input
--> crea Request DTO
 -> llama RegisterUser
 -> RegisterUser valida/normaliza
 -> hashea password usando IPasswordHasher
 -> crea User
 -> guarda User usando IUserRepository
--> devuelve Result DTO
 -> Console UI muestra mensaje
 
 UI input
