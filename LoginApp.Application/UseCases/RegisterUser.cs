@@ -14,8 +14,10 @@ public class RegisterUser
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher; 
     private readonly EmailValueObject _email = new();       
-    private readonly PasswordValueObject _password = new(); 
+    private readonly PasswordValueObject _password = new();
     private readonly UserNameValueObject _username = new();
+    
+
 
     //Constructores -> Solo 1 para que no quedé null el otro constructor.
     public RegisterUser(IPasswordHasher passwordHasher, IUserRepository userRepository)
@@ -66,8 +68,17 @@ public class RegisterUser
 
     }
 
-    //public RegisterUserResult Execute()
-    //{ }
+    public Result Execute(RegisterUserRequest request)
+    {
+        //Proposito: Ejecutar el proceso de registro de un nuevo usuario, incluyendo la validación de los datos proporcionados
+        //Devuelve un objeto Result que indica si el registro fue exitoso o no.
+
+        string resultUserName = GetValidatedUserName(request.UserName);
+        string resultEmail = GetValidatedEmail(request.Email);
+        string resultHash = GetValidatedPassword(request.Password);
+
+        return SaveUserInRepository(resultUserName, resultHash, resultEmail);
+    }
     
 
 }
