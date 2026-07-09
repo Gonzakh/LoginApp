@@ -12,7 +12,7 @@ public class InMemoryUserRepository : IUserRepository
     private readonly List<User> _InMemoryUsers = new();
 
 
-    public Result add(User user)
+    public Result Add(User user)
     {   //Proposito: Agregar un nuevo usuario a la lista de usuarios en memoria, verificando duplicados por correo electrónico y nombre de usuario antes de agregarlo.
         //Retorna un objeto Result indicando si la operación fue exitosa o no, junto con un mensaje correspondiente.
 

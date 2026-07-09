@@ -1,3 +1,4 @@
+using LoginApp.Application.Common;
 using LoginApp.Application.Interfaces;
 using LoginApp.Domain.ValueObjects;
 
@@ -16,16 +17,14 @@ public class RegisterUser
     private readonly PasswordValueObject _password = new(); 
     private readonly UserNameValueObject _username = new();
 
-    //Constructores
-    public RegisterUser(IPasswordHasher passwordHasher)
+    //Constructores -> Solo 1 para que no quedé null el otro constructor.
+    public RegisterUser(IPasswordHasher passwordHasher, IUserRepository userRepository)
     {
         _passwordHasher = passwordHasher;
-    }
-
-    public RegisterUser(IUserRepository userRepository)
-    {
         _userRepository = userRepository;
     }
+
+  
 
     //Métodos
     public string GetValidatedEmail(string requestEmail)
@@ -56,15 +55,19 @@ public class RegisterUser
         return validatedUserName; 
     }
 
-    public void SaveUserInRepository(string validatedUserName, string hashedPassword, string validatedEmail)
+    public Result SaveUserInRepository(string validatedUserName, string hashedPassword, string validatedEmail)
     {
         //Proposito: Crear un nuevo usuario con los datos validados y guardarlo en el repositorio.
         //Aclaración: Los datos validados *userName, *hashedPassword y *validatedEmail se pasan como parámetros validados.
 
         var newUser = new Domain.Entities.User(validatedUserName, hashedPassword, validatedEmail); // Crear una nueva instancia de User con los datos validados
+        return _userRepository.Add(newUser); // Guardar el nuevo usuario en el repositorio y retornar el resultado de la operación
 
 
-        //Falta donde lo manda jejox
     }
+
+    //public RegisterUserResult Execute()
+    //{ }
+    
 
 }

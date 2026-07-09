@@ -22,3 +22,9 @@ UI input
 -> UI output
 
 -- La UI solo recolecta datos. No valida email. No hashea. No crea User.
+
+
+--Anotaciones:
+
+//Result.cs sirve si querés evitar excepciones para errores esperados, como email duplicado.
+//Excepción mejor para cosas inesperadas.
