@@ -43,5 +43,6 @@ public class InMemoryUserRepository : IUserRepository
         return _InMemoryUsers.Any(user => user.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
                              //StringComaparison.OrdinalIgnoreCase compara sin tener en cuenta mayúsculas y minúsculas.
     }
+    
 
 }
